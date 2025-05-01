@@ -8,6 +8,6 @@ import icon from 'astro-icon';
 // https://astro.build/config
 export default defineConfig({
     site: "https://dgcc-club.github.io",
-    base: "dgcc-astro",
+    base: "dgcc-club",
     integrations: [tailwind(), icon()]
 });
