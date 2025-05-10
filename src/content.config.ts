@@ -30,4 +30,16 @@ const workshops = defineCollection({
     })
 })
 
-export const collections = {team_data_schema, workshops};
+const blog = defineCollection({
+    type: "content",
+    schema: z.object({
+        "title": z.string(),
+        "date": z.date(),
+        "description": z.string().optional(),
+        "author": z.string().optional(),
+        "image": z.string().optional(),
+        "hidden": z.boolean().optional(),
+    })
+})
+
+export const collections = {team_data_schema, workshops, blog};

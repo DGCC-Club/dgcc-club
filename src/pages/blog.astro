@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { blog } from '../collection';
+
+
+// Custom sorting to show "Welcome" post first, then sort others by date
+const sortedPosts = blog.filter(post => !post.data.hidden).sort((a, b) => {
+  // If one is the welcome post, it should come first
+  if (a.slug === 'welcome') return -1;
+  if (b.slug === 'welcome') return 1;
+  
+  // Otherwise sort by date (newest first)
+  return b.data.date.valueOf() - a.data.date.valueOf();
+});
+---
+
+<Base title="Blog | DGCC">
+  <div class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold text-center mb-12 text-white">DGCC Blogs</h1>
+    
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {sortedPosts.map(post => (
+        <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="p-6">
+            <div class="text-amber-400 text-sm mb-2">
+              {post.data.date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}
+            </div>
+            <h2 class="text-xl font-bold mb-3 text-white">
+              <a href={`/blog/${post.slug}`} class="hover:text-amber-400 transition-colors">
+                {post.data.title}
+              </a>
+            </h2>
+            {post.data.description && (
+              <p class="text-gray-300 mb-4">{post.data.description}</p>
+            )}
+            <a 
+              href={`/blog/${post.slug}`} 
+              class="inline-block px-4 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 transition-colors"
+            >
+              Read More
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+    
+    {sortedPosts.length === 0 && (
+      <div class="text-center py-12">
+        <p class="text-xl text-gray-300">No blog posts yet. Check back soon!</p>
+      </div>
+    )}
+  </div>
+</Base>
