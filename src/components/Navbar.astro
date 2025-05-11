@@ -1,0 +1,81 @@
+---
+const navItems = [
+    {name: "Home", href: "/dgcc-club"},
+    {name: "About", href: "#about"},
+    {name: "Events", href: "#events"},
+    {name: "Team", href: "/dgcc-club/team/"},
+    {name: "Typing Leaderboard", href: "/dgcc-club/typing/"},
+    // {name: "Achievements", href: "/dgcc-club/achievements/", highlight: true}
+];
+---
+<nav class="fixed w-full z-50 bg-black/30 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <a href="#" class="flex items-center">
+                        <span class="text-white font-bold text-xl">&lt;/&gt; DGCC</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                    {navItems.map((item) => (
+                            <a
+                                    href={item.href}
+                                    class={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                                        item.highlight
+                                            ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                                            : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                                    }`}
+                            >
+                                {item.name}
+                            </a>
+                    ))}
+                </div>
+            </div>
+            <div class="md:hidden">
+                <button
+                        id="mobile-menu-button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                >
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state -->
+    <div id="mobile-menu" class="md:hidden hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {navItems.map((item) => (
+                    <a
+                            href={item.href}
+                            class={`block px-3 py-2 rounded-md text-base font-medium ${
+                                item.highlight
+                                    ? 'bg-indigo-600 text-white'
+                                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                            }`}
+                    >
+                        {item.name}
+                    </a>
+            ))}
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Toggle mobile menu
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+</script>

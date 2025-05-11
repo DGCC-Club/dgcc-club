@@ -1,0 +1,59 @@
+---
+const features = [
+  {
+    title: "Weekly Workshops",
+    description: "Learn new technologies and programming concepts through hands-on workshops led by industry experts.",
+    icon: "🔧"
+  },
+  {
+    title: "Coding Challenges",
+    description: "Test your skills with regular coding challenges and hackathons to apply what you've learned.",
+    icon: "🏆"
+  },
+  {
+    title: "Mentorship",
+    description: "Get guidance from experienced developers who can help you navigate your coding journey.",
+    icon: "👨‍💻"
+  },
+  {
+    title: "Project Collaboration",
+    description: "Work with other members on real-world projects to build your portfolio and gain experience.",
+    icon: "🤝"
+  }
+];
+---
+
+<section id="about" class="py-20 relative bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold sm:text-4xl">
+        Who are We? 👀
+      </h2>
+      <p class="mt-4 max-w-7xl mx-auto text-xl text-gray-400 text-justify">
+        A student-driven community at Deakin University, GIFT City, India that aims to enhance the coding and analytics culture across the entire institution. We plan to achieve this by offering regular demonstrations covering topics ranging from beginner to advanced levels.
+      </p>
+    </div>
+
+    <div class="mt-16">
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {features.map((feature) => (
+          <div class="pt-6">
+            <div class="flow-root bg-gray-800 rounded-lg px-6 pb-8">
+              <div class="-mt-6">
+                <div>
+                  <span class="inline-flex items-center justify-center p-3 bg-indigo-600 rounded-md shadow-lg text-3xl">
+                    {feature.icon}
+                  </span>
+                </div>
+                <h3 class="mt-8 text-lg font-medium text-white tracking-tight">{feature.title}</h3>
+                <p class="mt-5 text-base text-gray-400">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

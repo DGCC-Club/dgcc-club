@@ -1,5 +1,4 @@
 ---
-import NavigationBar from "../components/NavigationBar.astro";
 import {ClientRouter} from 'astro:transitions';
 
 const bg_video_url = '/dgcc-club/socials/week0-bw.mp4'
@@ -21,7 +20,6 @@ const bg_video_url = '/dgcc-club/socials/week0-bw.mp4'
 <div id="filter" class="absolute inset-0 w-full h-full mix-blend-exclusion bg-black"></div>
 <!--Main Content-->
 <div class="fixed w-full h-full group cursor-pointer overflow-y-auto overflow-x-hidden">
-    <NavigationBar/>
     <div class="w-full h-full min-w-full min-h-full" transition:animate="slide" transition:name="slot">
         <slot>DEFAULT TEXT</slot>
     </div>

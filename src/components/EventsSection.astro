@@ -1,0 +1,73 @@
+---
+const upcomingEvents = [
+  {
+    title: "Intro to Web Development",
+    date: "June 15, 2024",
+    time: "6:00 PM - 8:00 PM",
+    location: "Tech Hub, Room 204",
+    description: "Learn the basics of HTML, CSS, and JavaScript to build your first website."
+  },
+  {
+    title: "React Workshop",
+    date: "June 22, 2024",
+    time: "5:30 PM - 7:30 PM",
+    location: "Online (Zoom)",
+    description: "Dive into React and learn how to build interactive user interfaces."
+  },
+  {
+    title: "Summer Hackathon",
+    date: "July 10-12, 2024",
+    time: "All day",
+    location: "Innovation Center",
+    description: "48-hour coding challenge to build solutions for local community problems."
+  }
+];
+---
+
+<section id="events" class=" relative py-20 bg-gray-800 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold sm:text-4xl">
+        Upcoming Events
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400">
+        Join us for workshops, hackathons, and social coding sessions.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-3">
+      {upcomingEvents.map((event) => (
+        <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:transform hover:scale-105">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white">{event.title}</h3>
+            <div class="mt-4 flex items-center text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span>{event.date}</span>
+            </div>
+            <div class="mt-2 flex items-center text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{event.time}</span>
+            </div>
+            <div class="mt-2 flex items-center text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>{event.location}</span>
+            </div>
+            <p class="mt-4 text-gray-300">{event.description}</p>
+            <div class="mt-6">
+              <a href="#" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors duration-200">
+                Join Online
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

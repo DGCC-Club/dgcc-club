@@ -1,9 +1,16 @@
 ---
-import Base from "./Base.astro";
+import Layout from "./Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import TypingSection from "../components/TypingSection.astro";
+import VideoBackground from "../components/VideoBackground.astro";
 ---
 <!--Changes in this place will change how each individual workshops page will look-->
-<Base>
-    <div class="text-white">
-        <slot/>
+<Layout title="Typing Test | DGCC-Club">
+    <div class="relative min-h-screen">
+        <VideoBackground/>
+        <Navbar/>
+        <div class="text-white">
+            <slot/>
+        </div>
     </div>
-</Base>
+</Layout>

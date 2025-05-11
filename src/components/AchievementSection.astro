@@ -1,0 +1,42 @@
+---
+import {Image} from "astro:assets";
+import achievement_workshop from './assets/achievements.jpg'
+
+const achievements = [
+    {srcName: achievement_workshop, alt: "Workshop", name: "Workshop", anchorLink: "/dgcc-club/workshop"},
+    {srcName: achievement_workshop, alt: "Hackathon", name: "Hackathon", anchorLink: "/dgcc-club/workshop"},
+    {
+        srcName: achievement_workshop,
+        alt: "Projects",
+        name: "Projects",
+        isDummy: true,
+        anchorLink: "/dgcc-club/workshop"
+    },
+    {srcName: achievement_workshop, alt: "Certificates", name: "Certificates", anchorLink: "/dgcc-club/workshop"},
+    {
+        srcName: achievement_workshop,
+        alt: "Individual Achievements",
+        name: "Individual Achievements",
+        anchorLink: "/dgcc-club/workshop"
+    },
+];
+---
+
+<section class="py-20 bg-gray-900/80 backdrop-blur-sm text-white">
+    <div class="py-20 p-10 w-full h-full min-w-full  border-amber-500 rounded-xl overflow-auto">
+        <main class="w-full h-full min-w-full md:grid md:grid-rows-2 md:grid-cols-3 gap-10">
+            {achievements.map(achievement => (
+                    <a class=`w-full` href={achievement.anchorLink}>
+                        <Image
+                                src={achievement.srcName}
+                                alt={achievement.alt}
+                                width={300}
+                                height={200}
+                                class=`rounded-lg w-full transition-transform cursor-pointer`
+                        />
+                        <h3 class="text-2xl text-white font-bold">{achievement.name}</h3>
+                    </a>
+            ))}
+        </main>
+    </div>
+</section>
