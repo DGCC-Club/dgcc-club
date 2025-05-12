@@ -1,0 +1,153 @@
+---
+// Initial events to display
+const initialEvents = Array.from({length: 12}, (_, i) => {
+    const id = i + 1;
+    const randomHeight = Math.floor(Math.random() * 200) + 200; // Random height between 200-400px
+    return {
+        id,
+        title: `Coding Workshop ${id}`,
+        date: `${Math.floor(Math.random() * 12) + 1}/${Math.floor(Math.random() * 28) + 1}/2023`,
+        image: `/dgcc-club/achievements.jpg`,
+        description: "Members learning and collaborating on coding projects."
+    };
+});
+---
+<section class="p-20 bg-gray-700/80 backdrop-blur-sm text-white">
+    <div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="event-gallery">
+            {initialEvents.map((event) => (
+                    <div
+                            class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:transform hover:scale-105"
+                    >
+                        <div class="overflow-hidden">
+                            <img
+                                    src={event.image || "/dgcc-club/achievements.jpg"}
+                                    alt={event.title}
+                                    class="w-full h-auto object-cover transition-transform duration-500 hover:scale-110"
+                                    style={`min-height: 200px;`}
+                                    onerror="this.src='/dgcc-club/achievements.jpg'"
+                            />
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-white">{event.title}</h3>
+                            <p class="text-sm text-gray-400">{event.date}</p>
+                            <p class="mt-2 text-sm text-gray-300">{event.description}</p>
+                        </div>
+                    </div>
+            ))}
+        </div>
+
+        <div id="loader" class="flex justify-center mt-8">
+            <div class="h-10"></div> <!-- Invisible element for intersection observer -->
+        </div>
+
+        <div id="end-message" class="text-center mt-8 text-gray-400 hidden">
+            <p>You've reached the end of our event gallery.</p>
+        </div>
+    </div>
+
+    <script is:raw>
+        // Generate more events
+        function generateMoreEvents(startIndex, count) {
+            const events = [];
+            for (let i = startIndex; i < startIndex + count; i++) {
+                const randomHeight = Math.floor(Math.random() * 200) + 200; // Random height between 200-400px
+                events.push({
+                    id: i,
+                    title: `Coding Workshop ${i}`,
+                    date: `${Math.floor(Math.random() * 12) + 1}/${Math.floor(Math.random() * 28) + 1}/2023`,
+                    image: `/dgcc-club/achievements.jpg`,
+                    description: "Members learning and collaborating on coding projects."
+                });
+            }
+            return events;
+        }
+
+        // Create event card HTML
+        function createEventCard(event) {
+            return `
+      <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:transform hover:scale-105">
+        <div class="overflow-hidden">
+          <img
+            src="${event.image}"
+            alt="${event.title}"
+            class="w-full h-auto object-cover transition-transform duration-500 hover:scale-110"
+            style="min-height: 200px;"
+            onerror="this.src='/dgcc-club/achievements.jpg"
+          />
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-bold text-white">${event.title}</h3>
+          <p class="text-sm text-gray-400">${event.date}</p>
+          <p class="mt-2 text-sm text-gray-300">${event.description}</p>
+        </div>
+      </div>
+    `;
+        }
+
+        // Variables for infinite scroll
+        let currentIndex = 13; // Start after initial events
+        let loading = false;
+        let hasMore = true;
+        const maxEvents = 50; // For demo purposes
+
+        // Set up intersection observer for infinite scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('loader');
+            const gallery = document.getElementById('event-gallery');
+            const endMessage = document.getElementById('end-message');
+
+            const loadMoreEvents = () => {
+                if (loading || !hasMore) return;
+
+                loading = true;
+
+                // Show loading indicator
+                loader.innerHTML = `
+        <div class="flex items-center space-x-2">
+          <div class="w-4 h-4 rounded-full bg-indigo-600 animate-pulse"></div>
+          <div class="w-4 h-4 rounded-full bg-indigo-600 animate-pulse delay-75"></div>
+          <div class="w-4 h-4 rounded-full bg-indigo-600 animate-pulse delay-150"></div>
+          <span class="text-gray-400">Loading more events...</span>
+        </div>
+      `;
+
+                // Simulate API call delay
+                setTimeout(() => {
+                    const newEvents = generateMoreEvents(currentIndex, 8);
+
+                    // Add new events to the gallery
+                    newEvents.forEach(event => {
+                        const eventHTML = createEventCard(event);
+                        gallery.insertAdjacentHTML('beforeend', eventHTML);
+                    });
+
+                    currentIndex += newEvents.length;
+                    loading = false;
+
+                    // Reset loader
+                    loader.innerHTML = '<div class="h-10"></div>';
+
+                    // Check if we've reached the limit
+                    if (currentIndex >= maxEvents) {
+                        hasMore = false;
+                        loader.style.display = 'none';
+                        endMessage.classList.remove('hidden');
+                    }
+                }, 1000);
+            };
+
+            // Set up intersection observer
+            const observer = new IntersectionObserver((entries) => {
+                const first = entries[0];
+                if (first.isIntersecting && hasMore) {
+                    loadMoreEvents();
+                }
+            }, {threshold: 1.0});
+
+            if (loader) {
+                observer.observe(loader);
+            }
+        });
+    </script>
+</section>

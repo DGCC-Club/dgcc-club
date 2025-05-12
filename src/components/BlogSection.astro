@@ -1,0 +1,322 @@
+---
+// Sample blog post data
+const blogPosts = [
+    {
+        id: 1,
+        title: "Getting Started with React Hooks",
+        subtitle: "A beginner's guide to using React's useState and useEffect",
+        date: "2023-05-15",
+        author: "Alex Johnson",
+        tags: ["React", "JavaScript", "Frontend"],
+        image: "/placeholder.svg?height=250&width=500&text=React+Hooks",
+        excerpt: "React Hooks have revolutionized how we build components. Learn how to use them effectively in your projects."
+    },
+    {
+        id: 2,
+        title: "Building RESTful APIs with Node.js",
+        subtitle: "A comprehensive guide to creating robust backend services",
+        date: "2023-06-22",
+        author: "Sarah Chen",
+        tags: ["Node.js", "Backend", "API"],
+        image: "/placeholder.svg?height=250&width=500&text=Node.js+APIs",
+        excerpt: "Learn how to design and implement RESTful APIs using Node.js, Express, and MongoDB."
+    },
+    {
+        id: 3,
+        title: "Introduction to Machine Learning with Python",
+        subtitle: "Understanding the basics of ML algorithms",
+        date: "2023-07-10",
+        author: "Michael Rodriguez",
+        tags: ["Python", "Machine Learning", "Data Science"],
+        image: "/placeholder.svg?height=250&width=500&text=Machine+Learning",
+        excerpt: "Dive into the world of machine learning and discover how to implement basic algorithms using Python."
+    },
+    {
+        id: 4,
+        title: "CSS Grid vs Flexbox: When to Use Each",
+        subtitle: "Mastering modern CSS layout techniques",
+        date: "2023-08-05",
+        author: "Priya Patel",
+        tags: ["CSS", "Frontend", "Web Design"],
+        image: "/placeholder.svg?height=250&width=500&text=CSS+Layouts",
+        excerpt: "Understand the differences between CSS Grid and Flexbox and learn when to use each for optimal layouts."
+    },
+    {
+        id: 5,
+        title: "Introduction to Docker for Developers",
+        subtitle: "Containerize your applications for consistent deployment",
+        date: "2023-09-18",
+        author: "David Kim",
+        tags: ["Docker", "DevOps", "Backend"],
+        image: "/placeholder.svg?height=250&width=500&text=Docker",
+        excerpt: "Learn how to use Docker to package your applications and ensure they run consistently across different environments."
+    },
+    {
+        id: 6,
+        title: "TypeScript Best Practices",
+        subtitle: "Writing cleaner, more maintainable code with TypeScript",
+        date: "2023-10-07",
+        author: "Emma Wilson",
+        tags: ["TypeScript", "JavaScript", "Frontend"],
+        image: "/placeholder.svg?height=250&width=500&text=TypeScript",
+        excerpt: "Discover best practices for using TypeScript in your projects to improve code quality and developer experience."
+    },
+    {
+        id: 7,
+        title: "Getting Your First Developer Job",
+        subtitle: "Tips and strategies for landing your dream role",
+        date: "2023-11-12",
+        author: "James Taylor",
+        tags: ["Career", "Job Search"],
+        image: "/placeholder.svg?height=250&width=500&text=Developer+Jobs",
+        excerpt: "Navigate the job market with confidence using these proven strategies for landing your first developer position."
+    },
+    {
+        id: 8,
+        title: "Introduction to Web Accessibility",
+        subtitle: "Building inclusive web applications for all users",
+        date: "2023-12-03",
+        author: "Olivia Martinez",
+        tags: ["Accessibility", "Frontend", "Web Design"],
+        image: "/placeholder.svg?height=250&width=500&text=Web+Accessibility",
+        excerpt: "Learn why web accessibility matters and how to implement WCAG guidelines in your projects."
+    }
+];
+
+// Get all unique tags from blog posts
+const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
+
+// Format date function
+function formatDate(dateString: string) {
+    return new Date(dateString).toLocaleDateString(undefined, {year: 'numeric', month: 'long', day: 'numeric'});
+}
+---
+
+<section class="py-20 bg-gray-700/80 backdrop-blur-sm text-white">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-extrabold sm:text-5xl text-white">CodeClub Blog</h1>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400">
+                    Insights, tutorials, and stories from our coding community.
+                </p>
+            </div>
+            <!-- Filters and sorting -->
+            <div class="mb-8 bg-gray-800 p-6 rounded-lg">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div>
+                        <h2 class="text-white text-lg font-medium mb-2">Filter by Tags</h2>
+                        <div class="flex flex-wrap gap-2" id="tag-filters">
+                            {allTags.map(tag => (
+                                    <button
+                                            data-tag={tag}
+                                            class="tag-filter px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 bg-gray-700 text-gray-300 hover:bg-gray-600"
+                                    >
+                                        {tag}
+                                    </button>
+                            ))}
+                            <button
+                                    id="clear-filters"
+                                    class="px-3 py-1 rounded-full text-sm font-medium bg-red-600 text-white hover:bg-red-700 transition-colors duration-200 hidden"
+                            >
+                                Clear Filters
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-white text-lg font-medium mb-2">Sort By</h2>
+                        <select
+                                id="sort-select"
+                                class="bg-gray-700 text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        >
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="alphabetical">Alphabetical</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog posts -->
+            <div id="blog-posts-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {blogPosts.map(post => (
+                        <div
+                                class="blog-post bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:transform hover:scale-105"
+                                data-tags={post.tags.join(',')}
+                                data-date={post.date}
+                                data-title={post.title}
+                        >
+                            <div class="overflow-hidden h-48">
+                                <img
+                                        src={/*post.image ||*/ "/dgcc-club/achievements.jpg"}
+                                        alt={post.title}
+                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                                />
+                            </div>
+                            <div class="p-6">
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    {post.tags.map(tag => (
+                                            <span
+                                                    class="tag-pill px-2 py-1 bg-gray-700 text-xs font-medium rounded-full text-gray-300 cursor-pointer"
+                                                    data-tag={tag}
+                                            >
+                {tag}
+              </span>
+                                    ))}
+                                </div>
+                                <h3 class="text-xl font-bold text-white">{post.title}</h3>
+                                <h4 class="text-md text-gray-400 mt-1">{post.subtitle}</h4>
+                                <div class="flex items-center mt-3 text-sm text-gray-500">
+                                    <span>{post.author}</span>
+                                    <span class="mx-2">•</span>
+                                    <span>{formatDate(post.date)}</span>
+                                </div>
+                                <p class="mt-4 text-gray-300">{post.excerpt}</p>
+                                <div class="mt-6">
+                                    <a
+                                            href={`/blog/${post.id}`}
+                                            class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors duration-200"
+                                    >
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                ))}
+            </div>
+
+            <!-- No results message -->
+            <div id="no-results" class="text-center py-12 hidden">
+                <h3 class="text-xl text-gray-400">No blog posts match your filters.</h3>
+                <button
+                        id="clear-filters-message"
+                        class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors duration-200"
+                >
+                    Clear Filters
+                </button>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script is:raw>
+    document.addEventListener('DOMContentLoaded', () => {
+        const blogPosts = document.querySelectorAll('.blog-post');
+        const tagFilters = document.querySelectorAll('.tag-filter');
+        const tagPills = document.querySelectorAll('.tag-pill');
+        const clearFiltersBtn = document.getElementById('clear-filters');
+        const clearFiltersMessageBtn = document.getElementById('clear-filters-message');
+        const sortSelect = document.getElementById('sort-select');
+        const blogPostsContainer = document.getElementById('blog-posts-container');
+        const noResults = document.getElementById('no-results');
+
+        let selectedTags = [];
+
+        // Function to update post visibility based on filters
+        function updatePosts() {
+            let visibleCount = 0;
+
+            blogPosts.forEach(post => {
+                const postTags = post.getAttribute('data-tags').split(',');
+                const shouldShow = selectedTags.length === 0 ||
+                    selectedTags.some(tag => postTags.includes(tag));
+
+                post.style.display = shouldShow ? 'block' : 'none';
+                if (shouldShow) visibleCount++;
+            });
+
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                blogPostsContainer.classList.add('hidden');
+                noResults.classList.remove('hidden');
+            } else {
+                blogPostsContainer.classList.remove('hidden');
+                noResults.classList.add('hidden');
+            }
+
+            // Show/hide clear filters button
+            if (selectedTags.length > 0) {
+                clearFiltersBtn.classList.remove('hidden');
+            } else {
+                clearFiltersBtn.classList.add('hidden');
+            }
+
+            // Update tag filter buttons
+            tagFilters.forEach(btn => {
+                const tag = btn.getAttribute('data-tag');
+                if (selectedTags.includes(tag)) {
+                    btn.classList.remove('bg-gray-700', 'text-gray-300');
+                    btn.classList.add('bg-indigo-600', 'text-white');
+                } else {
+                    btn.classList.add('bg-gray-700', 'text-gray-300');
+                    btn.classList.remove('bg-indigo-600', 'text-white');
+                }
+            });
+        }
+
+        // Function to sort posts
+        function sortPosts() {
+            const sortValue = sortSelect.value;
+            const postsArray = Array.from(blogPosts);
+
+            postsArray.sort((a, b) => {
+                if (sortValue === 'newest') {
+                    return new Date(b.getAttribute('data-date')) - new Date(a.getAttribute('data-date'));
+                } else if (sortValue === 'oldest') {
+                    return new Date(a.getAttribute('data-date')) - new Date(b.getAttribute('data-date'));
+                } else if (sortValue === 'alphabetical') {
+                    return a.getAttribute('data-title').localeCompare(b.getAttribute('data-title'));
+                }
+            });
+
+            // Reorder posts in the DOM
+            postsArray.forEach(post => {
+                blogPostsContainer.appendChild(post);
+            });
+        }
+
+        // Toggle tag selection
+        function toggleTag(tag) {
+            if (selectedTags.includes(tag)) {
+                selectedTags = selectedTags.filter(t => t !== tag);
+            } else {
+                selectedTags.push(tag);
+            }
+            updatePosts();
+        }
+
+        // Clear all filters
+        function clearFilters() {
+            selectedTags = [];
+            sortSelect.value = 'newest';
+            updatePosts();
+            sortPosts();
+        }
+
+        // Event listeners
+        tagFilters.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tag = btn.getAttribute('data-tag');
+                toggleTag(tag);
+            });
+        });
+
+        tagPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                const tag = pill.getAttribute('data-tag');
+                toggleTag(tag);
+            });
+        });
+
+        clearFiltersBtn.addEventListener('click', clearFilters);
+        clearFiltersMessageBtn.addEventListener('click', clearFilters);
+
+        sortSelect.addEventListener('change', sortPosts);
+
+        // Initial sort
+        sortPosts();
+    });
+</script>
