@@ -3,48 +3,55 @@ import {ClientRouter} from 'astro:transitions';
 
 // Removed TypeScript interface as it is not supported in this file
 
-const { title, description = 'Develop your skills, build amazing projects, and connect with fellow coders in a supportive environment.', image = '/dgcc-club/coding_theme.gif' } = Astro.props;
+const {
+    title,
+    description = 'Develop your skills, build amazing projects, and connect with fellow coders in a supportive environment.',
+    image = '/dgcc-club/coding_theme.gif',
+    video = '/dgcc-club/socials/week0-bw.mp4'
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Coding Club - Learn, Build, Connect" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/dgcc-club/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="DGCC - Deakin GIFT Coding Club"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/svg+xml" href="/dgcc-club/favicon.svg"/>
+    <meta name="generator" content={Astro.generator}/>
+    <title>{title}</title>
 
-		<!-- Canonical URL -->
-		<link rel="canonical" href={canonicalURL} />
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL}/>
 
-		<meta name="title" content={title} />
-		<meta name="description" content={description} />
+    <meta name="title" content={title}/>
+    <meta name="description" content={description}/>
 
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={Astro.url} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={new URL(image, Astro.url)} />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content={Astro.url}/>
+    <meta property="og:title" content={title}/>
+    <meta property="og:description" content={description}/>
+    <meta property="og:image" content={new URL(image, Astro.url)}/>
+    <meta property="og:video" content={video}/>
 
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={Astro.url} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={new URL(image, Astro.url)} />
-		<ClientRouter />
-	</head>
-	<body>
-		<slot />
-	</body>
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:url" content={Astro.url}/>
+    <meta property="twitter:title" content={title}/>
+    <meta property="twitter:description" content={description}/>
+    <meta property="twitter:image" content={new URL(image, Astro.url)}/>
+	<meta property="twitter:video" content={video}/>
+    <ClientRouter/>
+</head>
+<body>
+<slot/>
+</body>
 </html>
 
 <style is:global>
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
 </style>
