@@ -1,0 +1,143 @@
+---
+const {title, subtitle, image, tags, author, date} = Astro.props;
+---
+<section class="pt-16 bg-gray-700/80 backdrop-blur-sm text-white min-h-full">
+    <div class="">
+        <div class="relative z-10 bg-gray-900/80 backdrop-blur-sm">
+            <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <!-- Back Button -->
+                <div class="mb-8">
+                    <a
+                            href="/dgcc-club/blog"
+                            class="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition-colors duration-200"
+                    >
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        Back to Blog
+                    </a>
+                </div>
+
+                <!-- Article Header -->
+                <header class="mb-12">
+                    <!-- Featured Image -->
+                    <div class="mb-8 rounded-lg overflow-hidden">
+                        <img
+                                src="/dgcc-club/achievements.jpg"
+                                alt={title}
+                                class="w-full h-64 sm:h-80 object-cover"
+                        />
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {tags.map(tag => (
+                                <span class="px-3 py-1 bg-indigo-600 text-white text-sm font-medium rounded-full">
+                  {tag}
+                </span>
+                        ))}
+                    </div>
+
+                    <!-- Title and Subtitle -->
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4 leading-tight">
+                        {title}
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        {subtitle}
+                    </p>
+
+                    <!-- Author and Meta Info -->
+                    <div class="flex items-center justify-between flex-wrap gap-4 pb-8 border-b border-gray-700">
+                        <div class="flex items-center">
+                            <img
+                                    src="/dgcc-club/coding_theme.gif"
+                                    alt={author}
+                                    class="w-12 h-12 rounded-full mr-4"
+                            />
+                            <div>
+                                <p class="text-white font-medium">{author}</p>
+                                <p class="text-white font-light">DGCC Member</p>
+                            </div>
+                        </div>
+                        <div class="text-gray-400 text-sm">
+                            <div class="flex items-center mb-1">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                {date}
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                {"readTime"}
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Article Content -->
+                <div class="prose prose-lg prose-invert max-w-none mb-12">
+                    <slot/>
+                </div>
+
+                <!-- Share Buttons -->
+                <div class="border-t border-gray-700 pt-8 mb-12">
+                    <h3 class="text-white text-lg font-medium mb-4">Share this article</h3>
+                    <div class="flex space-x-4">
+                        <a
+                                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(Astro.url.href)}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200"
+                        >
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                            </svg>
+                            Twitter
+                        </a>
+                        <a
+                                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-900 transition-colors duration-200"
+                        >
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <button
+                                onclick="navigator.clipboard.writeText(window.location.href)"
+                                class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors duration-200"
+                        >
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            Copy Link
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Author Bio -->
+                <!--<div class="bg-gray-800 rounded-lg p-6 mb-12">-->
+                <!--    <div class="flex items-start">-->
+                <!--        <img-->
+                <!--                src={"/placeholder.svg"}-->
+                <!--                alt={author}-->
+                <!--                class="w-16 h-16 rounded-full mr-4 flex-shrink-0"-->
+                <!--        />-->
+                <!--        <div>-->
+                <!--            <h3 class="text-white text-lg font-medium mb-2">About {author}</h3>-->
+                <!--            <p class="text-gray-300">author}</p>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
+            </article>
+        </div>
+    </div>
+</section>

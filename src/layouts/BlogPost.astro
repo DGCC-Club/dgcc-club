@@ -1,0 +1,30 @@
+---
+import VideoBackground from "../components/VideoBackground.astro";
+import Navbar from "../components/Navbar.astro";
+import Layout from "./Layout.astro";
+import BlogEntryComponent from "../components/BlogEntryComponent.astro";
+import Footer from "../components/Footer.astro";
+
+const {
+    id,
+    title,
+    subtitle,
+    date,
+    author,
+    tags,
+    image,
+    slug,
+    exerpt,
+} = Astro.props;
+---
+<!--Changes in this place will change how each individual workshops page will look-->
+<Layout title=`DGCC-Club Blog | ${title}`>
+    <div class="relative">
+        <!--<VideoBackground/>-->
+        <Navbar page_name={title} />
+        <BlogEntryComponent {id} {title} {subtitle} {date} {author} {slug} {exerpt} {tags} {image}>
+            <slot/>
+        </BlogEntryComponent>
+        <Footer/>
+    </div>
+</Layout>

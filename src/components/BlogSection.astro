@@ -1,7 +1,89 @@
 ---
 // Sample blog post data
+// const blogPosts = [
+//     {
+//         id: 1,
+//         title: "Getting Started with React Hooks",
+//         subtitle: "A beginner's guide to using React's useState and useEffect",
+//         date: "2023-05-15",
+//         author: "Alex Johnson",
+//         tags: ["React", "JavaScript", "Frontend"],
+//         image: "/placeholder.svg?height=250&width=500&text=React+Hooks",
+//         excerpt: "React Hooks have revolutionized how we build components. Learn how to use them effectively in your projects."
+//     },
+//     {
+//         id: 2,
+//         title: "Building RESTful APIs with Node.js",
+//         subtitle: "A comprehensive guide to creating robust backend services",
+//         date: "2023-06-22",
+//         author: "Sarah Chen",
+//         tags: ["Node.js", "Backend", "API"],
+//         image: "/placeholder.svg?height=250&width=500&text=Node.js+APIs",
+//         excerpt: "Learn how to design and implement RESTful APIs using Node.js, Express, and MongoDB."
+//     },
+//     {
+//         id: 3,
+//         title: "Introduction to Machine Learning with Python",
+//         subtitle: "Understanding the basics of ML algorithms",
+//         date: "2023-07-10",
+//         author: "Michael Rodriguez",
+//         tags: ["Python", "Machine Learning", "Data Science"],
+//         image: "/placeholder.svg?height=250&width=500&text=Machine+Learning",
+//         excerpt: "Dive into the world of machine learning and discover how to implement basic algorithms using Python."
+//     },
+//     {
+//         id: 4,
+//         title: "CSS Grid vs Flexbox: When to Use Each",
+//         subtitle: "Mastering modern CSS layout techniques",
+//         date: "2023-08-05",
+//         author: "Priya Patel",
+//         tags: ["CSS", "Frontend", "Web Design"],
+//         image: "/placeholder.svg?height=250&width=500&text=CSS+Layouts",
+//         excerpt: "Understand the differences between CSS Grid and Flexbox and learn when to use each for optimal layouts."
+//     },
+//     {
+//         id: 5,
+//         title: "Introduction to Docker for Developers",
+//         subtitle: "Containerize your applications for consistent deployment",
+//         date: "2023-09-18",
+//         author: "David Kim",
+//         tags: ["Docker", "DevOps", "Backend"],
+//         image: "/placeholder.svg?height=250&width=500&text=Docker",
+//         excerpt: "Learn how to use Docker to package your applications and ensure they run consistently across different environments."
+//     },
+//     {
+//         id: 6,
+//         title: "TypeScript Best Practices",
+//         subtitle: "Writing cleaner, more maintainable code with TypeScript",
+//         date: "2023-10-07",
+//         author: "Emma Wilson",
+//         tags: ["TypeScript", "JavaScript", "Frontend"],
+//         image: "/placeholder.svg?height=250&width=500&text=TypeScript",
+//         excerpt: "Discover best practices for using TypeScript in your projects to improve code quality and developer experience."
+//     },
+//     {
+//         id: 7,
+//         title: "Getting Your First Developer Job",
+//         subtitle: "Tips and strategies for landing your dream role",
+//         date: "2023-11-12",
+//         author: "James Taylor",
+//         tags: ["Career", "Job Search"],
+//         image: "/placeholder.svg?height=250&width=500&text=Developer+Jobs",
+//         excerpt: "Navigate the job market with confidence using these proven strategies for landing your first developer position."
+//     },
+//     {
+//         id: 8,
+//         title: "Introduction to Web Accessibility",
+//         subtitle: "Building inclusive web applications for all users",
+//         date: "2023-12-03",
+//         author: "Olivia Martinez",
+//         tags: ["Accessibility", "Frontend", "Web Design"],
+//         image: "/placeholder.svg?height=250&width=500&text=Web+Accessibility",
+//         excerpt: "Learn why web accessibility matters and how to implement WCAG guidelines in your projects."
+//     }
+// ];
 const blogPosts = [
-    {
+        {
         id: 1,
         title: "Getting Started with React Hooks",
         subtitle: "A beginner's guide to using React's useState and useEffect",
@@ -9,80 +91,10 @@ const blogPosts = [
         author: "Alex Johnson",
         tags: ["React", "JavaScript", "Frontend"],
         image: "/placeholder.svg?height=250&width=500&text=React+Hooks",
+        slug: 'react-hooks',
         excerpt: "React Hooks have revolutionized how we build components. Learn how to use them effectively in your projects."
     },
-    {
-        id: 2,
-        title: "Building RESTful APIs with Node.js",
-        subtitle: "A comprehensive guide to creating robust backend services",
-        date: "2023-06-22",
-        author: "Sarah Chen",
-        tags: ["Node.js", "Backend", "API"],
-        image: "/placeholder.svg?height=250&width=500&text=Node.js+APIs",
-        excerpt: "Learn how to design and implement RESTful APIs using Node.js, Express, and MongoDB."
-    },
-    {
-        id: 3,
-        title: "Introduction to Machine Learning with Python",
-        subtitle: "Understanding the basics of ML algorithms",
-        date: "2023-07-10",
-        author: "Michael Rodriguez",
-        tags: ["Python", "Machine Learning", "Data Science"],
-        image: "/placeholder.svg?height=250&width=500&text=Machine+Learning",
-        excerpt: "Dive into the world of machine learning and discover how to implement basic algorithms using Python."
-    },
-    {
-        id: 4,
-        title: "CSS Grid vs Flexbox: When to Use Each",
-        subtitle: "Mastering modern CSS layout techniques",
-        date: "2023-08-05",
-        author: "Priya Patel",
-        tags: ["CSS", "Frontend", "Web Design"],
-        image: "/placeholder.svg?height=250&width=500&text=CSS+Layouts",
-        excerpt: "Understand the differences between CSS Grid and Flexbox and learn when to use each for optimal layouts."
-    },
-    {
-        id: 5,
-        title: "Introduction to Docker for Developers",
-        subtitle: "Containerize your applications for consistent deployment",
-        date: "2023-09-18",
-        author: "David Kim",
-        tags: ["Docker", "DevOps", "Backend"],
-        image: "/placeholder.svg?height=250&width=500&text=Docker",
-        excerpt: "Learn how to use Docker to package your applications and ensure they run consistently across different environments."
-    },
-    {
-        id: 6,
-        title: "TypeScript Best Practices",
-        subtitle: "Writing cleaner, more maintainable code with TypeScript",
-        date: "2023-10-07",
-        author: "Emma Wilson",
-        tags: ["TypeScript", "JavaScript", "Frontend"],
-        image: "/placeholder.svg?height=250&width=500&text=TypeScript",
-        excerpt: "Discover best practices for using TypeScript in your projects to improve code quality and developer experience."
-    },
-    {
-        id: 7,
-        title: "Getting Your First Developer Job",
-        subtitle: "Tips and strategies for landing your dream role",
-        date: "2023-11-12",
-        author: "James Taylor",
-        tags: ["Career", "Job Search"],
-        image: "/placeholder.svg?height=250&width=500&text=Developer+Jobs",
-        excerpt: "Navigate the job market with confidence using these proven strategies for landing your first developer position."
-    },
-    {
-        id: 8,
-        title: "Introduction to Web Accessibility",
-        subtitle: "Building inclusive web applications for all users",
-        date: "2023-12-03",
-        author: "Olivia Martinez",
-        tags: ["Accessibility", "Frontend", "Web Design"],
-        image: "/placeholder.svg?height=250&width=500&text=Web+Accessibility",
-        excerpt: "Learn why web accessibility matters and how to implement WCAG guidelines in your projects."
-    }
-];
-
+]
 // Get all unique tags from blog posts
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
 
@@ -176,7 +188,7 @@ function formatDate(dateString: string) {
                                 <p class="mt-4 text-gray-300">{post.excerpt}</p>
                                 <div class="mt-6">
                                     <a
-                                            href={`/blog/${post.id}`}
+                                            href={`/dgcc-club/blog/${post.slug}`}
                                             class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors duration-200"
                                     >
                                         Read More
@@ -202,7 +214,7 @@ function formatDate(dateString: string) {
 
 </section>
 
-<script is:raw>
+<script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
         const blogPosts = document.querySelectorAll('.blog-post');
         const tagFilters = document.querySelectorAll('.tag-filter');

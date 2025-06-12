@@ -9,14 +9,20 @@ const navItems = [
     {name: "Typing Leaderboard", href: "/dgcc-club/typing/"},
     // {name: "Achievements", href: "/dgcc-club/achievements/", highlight: true}
 ];
+
+const {page_name} = Astro.props;
 ---
 <nav class="fixed w-full z-50 bg-black/30 backdrop-blur-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    <a href="/dgcc-club" class="flex items-center">
-                        <span class="text-white font-bold text-xl">&lt;/&gt; DGCC</span>
+                    <a href="/dgcc-club" class="flex items-center group">
+                        <span class="text-white font-bold text-xl">&lt;/&gt; DGCC
+                            <span class="text-indigo-300 group-hover:text-indigo-400">
+                                {(page_name != null)?` | ${page_name}` : ""}
+                            </span>
+                        </span>
                     </a>
                 </div>
             </div>

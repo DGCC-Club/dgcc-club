@@ -29,5 +29,20 @@ const workshops = defineCollection({
         "hidden": z.boolean().optional(),
     })
 })
+const blogs = defineCollection({
+    type: "content",
+    schema: z.object({
+        "id": z.number(),
+        "title": z.string(),
+        "subtitle": z.string().optional(),
+        "date": z.string(),
+        "author": z.string(),
+        "tags" : z.array(z.string()),
+        "image": z.string(),
+        "slug": z.string().optional(),
+        "excerpt": z.string(),
+        "hidden": z.boolean().optional(),
+    })
+})
 
-export const collections = {team_data_schema, workshops};
+export const collections = {team_data_schema, workshops, blogs};
