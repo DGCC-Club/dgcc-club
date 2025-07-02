@@ -6,7 +6,9 @@ const team_member_schema = z.object({
     "year": z.string(),
     "role": z.string(),
     "image": z.string(),
-    "bio": z.string()
+    "bio": z.string(),
+    "github": z.string().optional(),
+    "linkedin": z.string().optional(),
 })
 
 const team_data_schema = defineCollection({
