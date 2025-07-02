@@ -1,32 +1,12 @@
-# <img src="/images/team/placeholder.png">
-# <p class="label">🖥️ Programmer 🖥️</p>
-# <p class="label">🔌 Electrician 🔌</p>
-# <p class="label">🔧 Mechanic 🔧</p>
-# <p class="label">🚧 Safety 🚧</p>
-# <p class="label">⚙️ Member ⚙️</p>
-# <p class="label">⭐️ Team Captain ⭐️</p>
-# <h5>Name 'year</h5>
-# <p>Name is a first year subject.</p>
-
 team:
-  - name: "Hridoy Sankar Dutta"
-    year: ""
-    role: "⭐️ Faculty representative ⭐️"
-    image: "/dgcc-club/socials/member_images/hsd.jpg"
-    bio: "Hridoy is the faculty representative of this club."
-
   - name: "Shounak Ravi Bhalerao"
     year: "'26"
     role: "Lead Member"
     image: "/dgcc-club/socials/member_images/srb.jpg"
     bio: "Hello There! Nice to meet you!"
+    github: "https://github.com/Shounaks/"
+    linkedin: "https://www.linkedin.com/in/shounak-bhalerao/"
 
-  # Student
-  - name: "Shreyas N M"
-    year: "'26"
-    role: "Member"
-    image: "/dgcc-club/socials/member_images/snm.png"
-    bio: "Hello There! Nice to meet you!"
 
   # Student
   - name: "Parth Sirohi"
@@ -34,6 +14,15 @@ team:
     role: "Student Representative"
     image: "/dgcc-club/socials/member_images/ps.png"
     bio: "I am the Student Representative of the club"
+    github: "https://github.com/ParthSirohi"
+    linkedin: "https://www.linkedin.com/in/parthsirohi/"
+
+  # Student
+  - name: "Shreyas N M"
+    year: "'26"
+    role: "Member"
+    image: "/dgcc-club/socials/member_images/snm.png"
+    bio: "Hello There! Nice to meet you!"
 
   # Student
   - name: "Jividha Kishor Parate"
@@ -76,3 +65,16 @@ team:
     role: "Member"
     image: "/dgcc-club/socials/member_images/kp.jpg"
     bio: "Hello There! Nice to meet you!"
+
+  # Faculty
+  - name: "Hridoy Sankar Dutta"
+    year: ""
+    role: "⭐️ Faculty representative ⭐️"
+    image: "/dgcc-club/socials/member_images/hsd.jpg"
+    bio: "Hridoy is the faculty representative of this club."
+
+  - name: "Carl Saldanha"
+    year: ""
+    role: "⭐️ Faculty representative ⭐️"
+    image: "/dgcc-club/socials/member_images/cs.jpg"
+    bio: "Carl is the faculty representative of this club."
