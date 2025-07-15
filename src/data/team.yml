@@ -60,6 +60,14 @@ team:
     bio: "Stay Anonymous in the Web!!"
 
     #Student
+  - name: "Bhavishya Rane"
+    year: "26"
+    role: "Member"
+    image: "/dgcc-club/socials/member_images/br.jpg"
+    bio: "Innovate. Integrate. Dominate."
+    linkedin: "https://github.com/hatetech15"
+
+    #Student
   - name: "Khushi Patel"
     year: "26"
     role: "Member"
