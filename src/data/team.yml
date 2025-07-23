@@ -3,7 +3,7 @@ team:
     year: "'26"
     role: "Lead Member"
     image: "/dgcc-club/socials/member_images/srb.jpg"
-    bio: "Hello There! Nice to meet you!"
+    bio: "One step away from a legendary conversation!"
     github: "https://github.com/Shounaks/"
     linkedin: "https://www.linkedin.com/in/shounak-bhalerao/"
 
@@ -74,15 +74,29 @@ team:
     image: "/dgcc-club/socials/member_images/kp.jpg"
     bio: "Hello There! Nice to meet you!"
 
+    #Student
+  - name: "Jankit Vasoya"
+    year: "26"
+    role: "Member"
+    image: "/dgcc-club/socials/member_images/jv.jpg"
+    bio: "Hello There! Nice to meet you!"
+
   # Faculty
   - name: "Hridoy Sankar Dutta"
     year: ""
     role: "⭐️ Faculty representative ⭐️"
     image: "/dgcc-club/socials/member_images/hsd.jpg"
-    bio: "Hridoy is the faculty representative of this club."
+    bio: "Specialization: Data-Driven cybersecurity, Cybercrime, Online Harms and social network analysis"
+    github: "https://github.com/hridaydutta123"
 
   - name: "Carl Saldanha"
     year: ""
     role: "⭐️ Faculty representative ⭐️"
     image: "/dgcc-club/socials/member_images/cs.jpg"
     bio: "Carl is the faculty representative of this club."
+
+  - name: "Swati Kumari"
+    year: ""
+    role: "⭐️ Faculty representative ⭐️"
+    image: "/dgcc-club/socials/member_images/swt.jpg"
+    bio: "Specialization: Post Quantum Federated Learning & Blockchain"
